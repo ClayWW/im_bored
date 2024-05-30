@@ -104,12 +104,14 @@ function createWheel() {
 
 function spinWheel() {
     const spinner = document.getElementById('spinner');
-    const randomDegree = Math.floor(Math.random() * 360 + 720); // Random degree between 720 and 1080
-    spinner.style.transform = `rotate(${randomDegree}deg)`;
+    const randomDegree = Math.floor(Math.random() * 360);
+    const extraRotations = Math.floor(Math.random() * 4) + 2; // Random number of extra rotations (2-5)
+    const totalDegree = randomDegree + extraRotations * 360;
+    spinner.style.transform = `rotate(${totalDegree}deg)`;
 
     // Calculate selected activity based on the rotation
     setTimeout(() => {
-        const normalizedDegree = randomDegree % 360;
+        const normalizedDegree = totalDegree % 360;
         const activityIndex = Math.floor(normalizedDegree / (360 / activities.length));
         const selectedActivity = activities[activityIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
