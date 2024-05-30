@@ -1,4 +1,5 @@
 const activities = [
+    // Add your activities here
     { name: 'Go to the gym', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
     { name: 'Go fossil hunting', timeOfDay: 'day', dayOfWeek: 'weekend', season: 'spring' },
     { name: 'Go look for cool rocks', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' },
@@ -83,48 +84,29 @@ const activities = [
     { name: 'Go on a scavenger hunt', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' }
 ];
 
-
-function getCurrentTimeOfDay() {
-    const hours = new Date().getHours();
-    return (hours >= 6 && hours < 18) ? 'day' : 'night';
-}
-
-function getCurrentDayOfWeek() {
-    const day = new Date().getDay();
-    return (day === 0 || day === 6) ? 'weekend' : 'weekday';
-}
-
-function getCurrentSeason() {
-    const month = new Date().getMonth();
-    if (month >= 2 && month <= 4) return 'spring';
-    if (month >= 5 && month <= 7) return 'summer';
-    if (month >= 8 && month <= 10) return 'fall';
-    return 'winter';
-}
-
-function filterActivities() {
-    const timeOfDay = getCurrentTimeOfDay();
-    const dayOfWeek = getCurrentDayOfWeek();
-    const season = getCurrentSeason();
-
-    return activities.filter(activity => 
-        (activity.timeOfDay === 'any' || activity.timeOfDay === timeOfDay) &&
-        (activity.dayOfWeek === 'any' || activity.dayOfWeek === dayOfWeek) &&
-        (activity.season === 'any' || activity.season === season)
-    );
-}
-
-function selectActivity() {
-    const filteredActivities = filterActivities();
-    const randomIndex = Math.floor(Math.random() * filteredActivities.length);
-    const selectedActivity = filteredActivities[randomIndex];
-    document.getElementById('activity').innerText = selectedActivity ? selectedActivity.name : 'No activities available.';
-}
-
-function setRandomBackground() {
-    const bodyElement = document.getElementById('body');
-    const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
-    bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
+function createWheel() {
+    const spinner = document.getElementById('spinner');
+    const numActivities = activities.length;
+    const angle = 360 / numActivities;
+    
+    activities.forEach((activity, index) => {
+        const slice = document.createElement('div');
+        slice.className = 'slice';
+        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
+        slice.style.background = `conic-gradient(
+            #4caf50 0% 25%, 
+            #f44336 25% 50%, 
+            #ffeb3b 50% 75%, 
+            #2196f3 75% 100%
+        )`;
+        spinner.appendChild(slice);
+        
+        const label = document.createElement('div');
+        label.className = 'label';
+        label.style.transform = `rotate(${angle / 2}deg) skewY(60deg)`;
+        label.innerText = activity.name;
+        slice.appendChild(label);
+    });
 }
 
 function spinWheel() {
@@ -143,4 +125,11 @@ function spinWheel() {
 
 window.onload = function() {
     setRandomBackground();
+    createWheel();
 };
+
+function setRandomBackground() {
+    const bodyElement = document.getElementById('body');
+    const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
+    bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
+}
