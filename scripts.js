@@ -94,6 +94,7 @@ function createReel() {
     });
 }
 
+
 function spinReel() {
     const reel = document.getElementById('reel');
     const numItems = activities.length;
@@ -107,6 +108,10 @@ function spinReel() {
         const finalIndex = totalItems % numItems;
         const selectedActivity = activities[finalIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
+        reel.style.transition = 'none';
+        reel.style.transform = 'translateY(0)';
+        void reel.offsetWidth; // Trigger a reflow
+        reel.style.transition = 'transform 1s ease-out';
     }, (totalItems / numItems) * 1000); // Match the duration of the CSS transition
 }
 

@@ -46,12 +46,24 @@ button:hover {
     align-items: center;
     justify-content: center;
     margin: 20px 0;
+    position: relative;
 }
 
 .ticker {
     font-size: 30px;
     color: #007bff;
-    margin: 0 10px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ticker-left {
+    left: -30px;
+}
+
+.ticker-right {
+    right: -30px;
 }
 
 #reel-container {
@@ -60,8 +72,8 @@ button:hover {
     overflow: hidden;
     border: 2px solid #007bff;
     border-radius: 5px;
-    position: relative;
 }
+
 
 #reel {
     display: flex;
