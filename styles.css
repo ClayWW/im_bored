@@ -71,16 +71,6 @@ button:hover {
     clip-path: polygon(100% 100%, 0 0, 100% 0);
 }
 
-.label {
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    transform-origin: 0% 0%;
-    transform: translate(25%, -100%) rotate(90deg);
-    white-space: nowrap;
-    font-size: 10px;
-}
-
 .ticker {
     position: absolute;
     top: -25px;

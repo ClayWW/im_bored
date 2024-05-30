@@ -89,23 +89,15 @@ function createWheel() {
     const numActivities = activities.length;
     const angle = 360 / numActivities;
 
-    activities.forEach((activity, index) => {
+    // Generate a unique color for each slice
+    const colors = Array.from({ length: numActivities }, () => `hsl(${Math.random() * 360}, 100%, 50%)`);
+
+    activities.forEach((_, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
         slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
-        slice.style.background = `conic-gradient(
-            #4caf50 0% 25%, 
-            #f44336 25% 50%, 
-            #ffeb3b 50% 75%, 
-            #2196f3 75% 100%
-        )`;
+        slice.style.background = colors[index];
 
-        const label = document.createElement('div');
-        label.className = 'label';
-        label.style.transform = `rotate(${angle / 2}deg) skewY(60deg)`;
-        label.innerText = activity.name;
-
-        slice.appendChild(label);
         spinner.appendChild(slice);
     });
 }
@@ -134,4 +126,5 @@ function setRandomBackground() {
     const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
     bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
 }
+
 
