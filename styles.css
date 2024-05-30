@@ -44,8 +44,8 @@ button:hover {
 
 #wheel {
     margin: 20px auto;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border: 10px solid #007bff;
     border-radius: 50%;
     position: relative;
@@ -56,6 +56,24 @@ button:hover {
     height: 100%;
     border-radius: 50%;
     transition: transform 4s ease-out;
+    position: relative;
+}
+
+.slice {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    transform-origin: 100% 100%;
+    clip-path: polygon(100% 100%, 0 0, 100% 0);
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform-origin: 0% 0%;
+    transform: translate(25%, -100%) rotate(90deg);
+    white-space: nowrap;
 }
 
 .ticker {
