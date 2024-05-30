@@ -95,28 +95,23 @@ function createWheel() {
     activities.forEach((_, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
-        slice.style.transform = `rotate(${angle * index}deg)`;
         slice.style.background = colors[index];
-        const innerSlice = document.createElement('div');
-        innerSlice.style.background = colors[index];
-        slice.appendChild(innerSlice);
+        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
         spinner.appendChild(slice);
     });
 }
 
 function spinWheel() {
     const spinner = document.getElementById('spinner');
-    const randomDegree = Math.floor(Math.random() * 360);
-    const extraRotations = Math.floor(Math.random() * 4) + 2;
-    const totalDegree = randomDegree + extraRotations * 360;
-    spinner.style.transform = `rotate(${totalDegree}deg)`;
+    const randomDegree = Math.floor(Math.random() * 360) + 720; // Ensures at least two full rotations
+    spinner.style.transform = `rotate(${randomDegree}deg)`;
 
     setTimeout(() => {
-        const normalizedDegree = totalDegree % 360;
+        const normalizedDegree = randomDegree % 360;
         const activityIndex = Math.floor(normalizedDegree / (360 / activities.length));
         const selectedActivity = activities[activityIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
-    }, 4000);
+    }, 4000); // Match the duration of the CSS transition
 }
 
 window.onload = function() {
@@ -129,6 +124,7 @@ function setRandomBackground() {
     const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
     bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
 }
+
 
 
 
