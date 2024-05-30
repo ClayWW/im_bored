@@ -105,17 +105,16 @@ function createWheel() {
 function spinWheel() {
     const spinner = document.getElementById('spinner');
     const randomDegree = Math.floor(Math.random() * 360);
-    const extraRotations = Math.floor(Math.random() * 4) + 2; // Random number of extra rotations (2-5)
+    const extraRotations = Math.floor(Math.random() * 4) + 2;
     const totalDegree = randomDegree + extraRotations * 360;
     spinner.style.transform = `rotate(${totalDegree}deg)`;
 
-    // Calculate selected activity based on the rotation
     setTimeout(() => {
         const normalizedDegree = totalDegree % 360;
         const activityIndex = Math.floor(normalizedDegree / (360 / activities.length));
         const selectedActivity = activities[activityIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
-    }, 4000); // Match the duration of the CSS transition
+    }, 4000);
 }
 
 window.onload = function() {
