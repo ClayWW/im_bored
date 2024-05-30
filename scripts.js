@@ -1,5 +1,5 @@
-// scripts.js
 const activities = [
+    // Add your activities here
     { name: 'Go to the gym', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
     { name: 'Go fossil hunting', timeOfDay: 'day', dayOfWeek: 'weekend', season: 'spring' },
     { name: 'Go look for cool rocks', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' },
@@ -82,3 +82,13 @@ function selectActivity() {
     const selectedActivity = filteredActivities[randomIndex];
     document.getElementById('activity').innerText = selectedActivity ? selectedActivity.name : 'No activities available.';
 }
+
+function setRandomBackground() {
+    const bodyElement = document.getElementById('body');
+    const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
+    bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
+}
+
+window.onload = function() {
+    setRandomBackground();
+};
