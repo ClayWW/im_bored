@@ -49,6 +49,7 @@ button:hover {
     border: 10px solid #007bff;
     border-radius: 50%;
     position: relative;
+    overflow: hidden;
 }
 
 #spinner {
@@ -57,6 +58,9 @@ button:hover {
     border-radius: 50%;
     transition: transform 4s ease-out;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .slice {
@@ -74,6 +78,7 @@ button:hover {
     transform-origin: 0% 0%;
     transform: translate(25%, -100%) rotate(90deg);
     white-space: nowrap;
+    font-size: 10px;
 }
 
 .ticker {

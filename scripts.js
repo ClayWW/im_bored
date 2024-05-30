@@ -92,7 +92,7 @@ function createWheel() {
     activities.forEach((activity, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
-        slice.style.transform = `rotate(${angle * index}deg)`;
+        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
         slice.style.background = `conic-gradient(
             #4caf50 0% 25%, 
             #f44336 25% 50%, 
@@ -102,7 +102,7 @@ function createWheel() {
 
         const label = document.createElement('div');
         label.className = 'label';
-        label.style.transform = `rotate(${angle / 2}deg) translateY(-100%)`;
+        label.style.transform = `rotate(${angle / 2}deg) skewY(60deg)`;
         label.innerText = activity.name;
 
         slice.appendChild(label);
@@ -134,3 +134,4 @@ function setRandomBackground() {
     const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
     bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
 }
+
