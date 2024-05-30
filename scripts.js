@@ -95,11 +95,12 @@ function createWheel() {
     activities.forEach((_, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
-        slice.style.background = colors[index];
-        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
+        slice.style.transform = `rotate(${angle * index}deg)`;
+        slice.style.borderBottomColor = colors[index];
         spinner.appendChild(slice);
     });
 }
+
 
 function spinWheel() {
     const spinner = document.getElementById('spinner');
