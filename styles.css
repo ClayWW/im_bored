@@ -6,6 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background: url('https://source.unsplash.com/random/1600x900') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -39,6 +40,23 @@ button {
 button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
+}
+
+#wheel {
+    margin: 20px auto;
+    width: 200px;
+    height: 200px;
+    border: 10px solid #007bff;
+    border-radius: 50%;
+    position: relative;
+}
+
+#spinner {
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(#4caf50 0% 25%, #f44336 25% 50%, #ffeb3b 50% 75%, #2196f3 75% 100%);
+    border-radius: 50%;
+    transition: transform 4s ease-out;
 }
 
 #activity {
