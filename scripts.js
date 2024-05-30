@@ -95,9 +95,11 @@ function createWheel() {
     activities.forEach((_, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
-        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
+        slice.style.transform = `rotate(${angle * index}deg)`;
         slice.style.background = colors[index];
-
+        const innerSlice = document.createElement('div');
+        innerSlice.style.background = colors[index];
+        slice.appendChild(innerSlice);
         spinner.appendChild(slice);
     });
 }
@@ -127,5 +129,6 @@ function setRandomBackground() {
     const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
     bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
 }
+
 
 

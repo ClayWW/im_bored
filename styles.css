@@ -1,3 +1,4 @@
+/* styles.css */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     display: flex;
@@ -49,27 +50,30 @@ button:hover {
     border-radius: 50%;
     position: relative;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 #spinner {
     width: 100%;
     height: 100%;
-    position: relative;
+    border-radius: 50%;
     transition: transform 4s ease-out;
-    transform: rotate(0deg);
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .slice {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     position: absolute;
-    transform-origin: 100% 100%;
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+    transform-origin: 50% 50%;
 }
-
+.slice div {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 50%, 100% 0%, 100% 100%);
+}
 .ticker {
     position: absolute;
     top: -10px;
