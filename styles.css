@@ -64,10 +64,10 @@ button:hover {
 
 .slice {
     width: 50%;
-    height: 50%;
+    height: 50%; 
     position: absolute;
     transform-origin: 100% 100%;
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .ticker {
