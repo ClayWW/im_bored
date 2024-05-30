@@ -5,7 +5,17 @@ const activities = [
     { name: 'Go look for cool rocks', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' },
     { name: 'Go mountain biking', timeOfDay: 'day', dayOfWeek: 'any', season: 'summer' },
     { name: 'Go shopping', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
-    { name: 'Go to the movies', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' }
+    { name: 'Go to the movies', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Read a book', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Take a walk in the park', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' },
+    { name: 'Cook a new recipe', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Visit a museum', timeOfDay: 'day', dayOfWeek: 'weekend', season: 'any' },
+    { name: 'Do some gardening', timeOfDay: 'day', dayOfWeek: 'any', season: 'spring' },
+    { name: 'Attend a local event', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Go for a run', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' },
+    { name: 'Practice a hobby', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Volunteer', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' },
+    { name: 'Try a new restaurant', timeOfDay: 'any', dayOfWeek: 'any', season: 'any' }
 ];
 
 function getCurrentTimeOfDay() {
