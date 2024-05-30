@@ -57,9 +57,8 @@ button:hover {
     height: 100%;
     border-radius: 50%;
     transition: transform 4s ease-out;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    transform-origin: 50% 50%;
 }
 
 .slice {
