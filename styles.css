@@ -66,6 +66,7 @@ button:hover {
 #reel {
     display: flex;
     flex-direction: column;
+    transform: translateY(0);
     transition: transform 1s ease-out;
 }
 
@@ -84,4 +85,5 @@ button:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     padding: 0 10px;
+    box-sizing: border-box;
 }
