@@ -84,7 +84,10 @@ button:hover {
     color: #ff0000;
 }
 
+
 #activity {
     margin-top: 25px;
     font-size: 22px;
-    colo
+    color: #333;
+    font-weight: bold;
+}
