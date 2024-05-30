@@ -97,14 +97,17 @@ function createReel() {
 function spinReel() {
     const reel = document.getElementById('reel');
     const numItems = activities.length;
-    const randomIndex = Math.floor(Math.random() * numItems);
-    const offset = -randomIndex * 50; // 50px is the height of each reel item
+    const cycleCount = 5; // Number of times to cycle through all activities
+    const totalItems = cycleCount * numItems + Math.floor(Math.random() * numItems);
+    const offset = -totalItems * 50; // 50px is the height of each reel item
+    reel.style.transition = `transform ${totalItems / numItems}s ease-out`;
     reel.style.transform = `translateY(${offset}px)`;
 
     setTimeout(() => {
-        const selectedActivity = activities[randomIndex].name;
+        const finalIndex = totalItems % numItems;
+        const selectedActivity = activities[finalIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
-    }, 1000); // Match the duration of the CSS transition
+    }, (totalItems / numItems) * 1000); // Match the duration of the CSS transition
 }
 
 window.onload = function() {
