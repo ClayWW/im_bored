@@ -84,39 +84,32 @@ const activities = [
     { name: 'Go on a scavenger hunt', timeOfDay: 'day', dayOfWeek: 'any', season: 'any' }
 ];
 
-function createWheel() {
-    const spinner = document.getElementById('spinner');
-    const numActivities = activities.length;
-    const angle = 360 / numActivities;
-
-    // Generate a unique color for each slice
-    const colors = Array.from({ length: numActivities }, () => `hsl(${Math.random() * 360}, 100%, 50%)`);
-
-    activities.forEach((_, index) => {
-        const slice = document.createElement('div');
-        slice.className = 'slice';
-        slice.style.background = colors[index];
-        slice.style.transform = `rotate(${angle * index}deg) skewY(-60deg)`;
-        spinner.appendChild(slice);
+function createReel() {
+    const reel = document.getElementById('reel');
+    activities.forEach(activity => {
+        const reelItem = document.createElement('div');
+        reelItem.className = 'reel-item';
+        reelItem.innerText = activity.name;
+        reel.appendChild(reelItem);
     });
 }
 
-function spinWheel() {
-    const spinner = document.getElementById('spinner');
-    const randomDegree = Math.floor(Math.random() * 360) + 720; // Ensures at least two full rotations
-    spinner.style.transform = `rotate(${randomDegree}deg)`;
+function spinReel() {
+    const reel = document.getElementById('reel');
+    const numItems = activities.length;
+    const randomIndex = Math.floor(Math.random() * numItems);
+    const offset = -randomIndex * 50; // 50px is the height of each reel item
+    reel.style.transform = `translateY(${offset}px)`;
 
     setTimeout(() => {
-        const normalizedDegree = randomDegree % 360;
-        const activityIndex = Math.floor(normalizedDegree / (360 / activities.length));
-        const selectedActivity = activities[activityIndex].name;
+        const selectedActivity = activities[randomIndex].name;
         document.getElementById('activity').innerText = selectedActivity;
-    }, 4000); // Match the duration of the CSS transition
+    }, 1000); // Match the duration of the CSS transition
 }
 
 window.onload = function() {
     setRandomBackground();
-    createWheel();
+    createReel();
 };
 
 function setRandomBackground() {
@@ -124,8 +117,3 @@ function setRandomBackground() {
     const randomImageUrl = 'https://source.unsplash.com/random/1600x900';
     bodyElement.style.backgroundImage = `url(${randomImageUrl})`;
 }
-
-
-
-
-

@@ -9,11 +9,14 @@
 <body id="body">
     <div class="container">
         <h1>What Should I Do Today?</h1>
-        <div id="wheel">
-            <div id="spinner"></div>
-            <div class="ticker">▼</div>
+        <div class="slot-machine">
+            <div class="ticker">▶</div>
+            <div id="reel-container">
+                <div id="reel"></div>
+            </div>
+            <div class="ticker">◀</div>
         </div>
-        <button onclick="spinWheel()">Find an Activity</button>
+        <button onclick="spinReel()">Find an Activity</button>
         <div id="activity"></div>
     </div>
     <script src="scripts.js"></script>
