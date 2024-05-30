@@ -95,8 +95,8 @@ function createWheel() {
     activities.forEach((_, index) => {
         const slice = document.createElement('div');
         slice.className = 'slice';
-        slice.style.transform = `rotate(${angle * index}deg)`;
-        slice.style.borderBottomColor = colors[index];
+        slice.style.background = colors[index];
+        slice.style.transform = `rotate(${angle * index}deg) skewY(-45deg)`;
         spinner.appendChild(slice);
     });
 }
