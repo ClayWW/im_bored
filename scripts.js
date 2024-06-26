@@ -124,7 +124,7 @@ function spinReel() {
         document.getElementById('activity').innerText = selectedActivity;
         reel.style.animation = 'none';
         reel.style.transform = `translateY(${-finalIndex * 50}px)`;
-    }, duration * 500);
+    }, duration * 100);
     /*
     const offset = -totalItems * 50; // 50px is the height of each reel item
     reel.style.transition = `transform ${totalItems / virtualNumItems}s linear`;
