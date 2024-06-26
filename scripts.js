@@ -103,7 +103,7 @@ function spinReel() {
     const cycleCount = 5; // Number of times to cycle through all activities
     const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
     
-    const duration = (totalItems / virtualNumItems); // Duration of the spin animation
+    const duration = (totalItems / virtualNumItems) * 10; // Duration of the spin animation
 
     const keyframes = `
         @keyframes spin {
@@ -124,7 +124,7 @@ function spinReel() {
         document.getElementById('activity').innerText = selectedActivity;
         reel.style.animation = 'none';
         reel.style.transform = `translateY(${-finalIndex * 50}px)`;
-    }, duration * 100);
+    }, duration * 1000);
     /*
     const offset = -totalItems * 50; // 50px is the height of each reel item
     reel.style.transition = `transform ${totalItems / virtualNumItems}s linear`;
