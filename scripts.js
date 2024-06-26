@@ -108,7 +108,8 @@ function spinReel() {
     const keyframes = `
         @keyframes spin {
             0% { transform: translateY(0); }
-            100% { transform: translateY(${-totalItems * 50}px); }
+            90% { transform: translateY(${-totalItems * 50}px); }
+            100% { transform: translateY(${-((totalItems + numItems - (totalItems % numItems)) % virtualNumItems) * 50}px); }
         }
     `;
     const styleSheet = document.createElement('style');
