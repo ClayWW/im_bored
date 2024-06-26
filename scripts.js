@@ -103,7 +103,7 @@ function spinReel() {
     const cycleCount = 5; // Number of times to cycle through all activities
     const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
     const offset = -totalItems * 50; // 50px is the height of each reel item
-    reel.style.transition = `transform ${totalItems / virtualNumItems}s ease-out`;
+    reel.style.transition = `transform ${totalItems / virtualNumItems}s linear`;
     reel.style.transform = `translateY(${offset}px)`;
 
     setTimeout(() => {
