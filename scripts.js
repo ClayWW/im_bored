@@ -87,7 +87,7 @@ const activities = [
 
 function createReel() {
     const reel = document.getElementById('reel');
-    const virtualActivities = [...activities, ...activities, ...activities]; // Repeat the activities list 3 times
+    const virtualActivities = [...activities, ...activities, ...activities, ...activities, ...activities, ...activities]; // Repeat the activities list 3 times
     virtualActivities.forEach(activity => {
         const reelItem = document.createElement('div');
         reelItem.className = 'reel-item';
