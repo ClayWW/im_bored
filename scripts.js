@@ -87,7 +87,7 @@ const activities = [
 
 function createReel() {
     const reel = document.getElementById('reel');
-    const virtualActivities = [...activities, ...activities, ...activities, ...activities, ...activities, ...activities]; // Repeat the activities list 3 times
+    const virtualActivities = [...activities, ...activities, ...activities]; // Repeat the activities list 3 times
     virtualActivities.forEach(activity => {
         const reelItem = document.createElement('div');
         reelItem.className = 'reel-item';
@@ -102,6 +102,30 @@ function spinReel() {
     const virtualNumItems = numItems * 3; // Number of items in the virtual list
     const cycleCount = 5; // Number of times to cycle through all activities
     const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
+    
+    const duration = (totalItems / virtualNumItems) * 2; // Duration of the spin animation
+
+    const keyframes = `
+        @keyframes spin {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(${-totalItems * 50}px); }
+        }
+    `;
+    const styleSheet = document.createElement('style');
+    styleSheet.type = 'text/css';
+    styleSheet.innerText = keyframes;
+    document.head.appendChild(styleSheet);
+
+    reel.style.animation = `spin ${duration}s linear`;
+
+    setTimeout(() => {
+        const finalIndex = totalItems % virtualNumItems;
+        const selectedActivity = activities[finalIndex % numItems].name;
+        document.getElementById('activity').innerText = selectedActivity;
+        reel.style.animation = 'none';
+        reel.style.transform = `translateY(${-finalIndex * 50}px)`;
+    }, duration * 1000);
+    /*
     const offset = -totalItems * 50; // 50px is the height of each reel item
     reel.style.transition = `transform ${totalItems / virtualNumItems}s linear`;
     reel.style.transform = `translateY(${offset}px)`;
@@ -115,6 +139,7 @@ function spinReel() {
         void reel.offsetWidth; // Trigger a reflow
         reel.style.transition = 'transform 1s ease-out';
     }, (totalItems / virtualNumItems) * 1000); // Match the duration of the CSS transition
+    */
 }
 
 function resetReel() {
