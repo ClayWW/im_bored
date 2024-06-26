@@ -103,7 +103,7 @@ function spinReel() {
     const cycleCount = 5; // Number of times to cycle through all activities
     const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
     
-    const duration = (totalItems / virtualNumItems) * 4; // Duration of the spin animation
+    const duration = (totalItems / virtualNumItems); // Duration of the spin animation
 
     const keyframes = `
         @keyframes spin {
