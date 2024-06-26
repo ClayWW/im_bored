@@ -100,27 +100,27 @@ function spinReel() {
     const reel = document.getElementById('reel');
     const numItems = activities.length;
     const virtualNumItems = numItems * 3; // Number of items in the virtual list
-    const cycleCount = 5; // Number of times to cycle through all activities
-    const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
-    const initialDuration = 2000; // Initial duration in milliseconds
+    const totalItems = 3 * virtualNumItems; // Cycle through the list 3 times
+    const selectedIndex = Math.floor(Math.random() * numItems); // Randomly select an activity
+    const selectedVirtualIndex = selectedIndex + 2 * numItems; // Ensure it's within the repeated range
+    const targetPosition = -selectedVirtualIndex * 50; // Calculate target position in pixels
 
     let currentStep = 0;
-    const steps = 100; // Number of steps for gradual slowdown
-    const durationStep = initialDuration / steps;
+    const steps = 200; // Number of steps for gradual slowdown
+    const initialSpeed = 10; // Initial speed in pixels per step
 
     function animateStep() {
         currentStep++;
         const progress = currentStep / steps;
-        const currentItems = totalItems * easeOutQuad(progress);
-        const offset = -currentItems * 50;
+        const easeOutProgress = easeOutQuad(progress);
+        const currentOffset = easeOutProgress * targetPosition;
 
-        reel.style.transform = `translateY(${offset}px)`;
+        reel.style.transform = `translateY(${currentOffset}px)`;
 
         if (currentStep < steps) {
-            setTimeout(animateStep, durationStep);
+            requestAnimationFrame(animateStep);
         } else {
-            const finalIndex = Math.floor(currentItems) % virtualNumItems;
-            const selectedActivity = activities[finalIndex % numItems].name;
+            const selectedActivity = activities[selectedIndex].name;
             document.getElementById('activity').innerText = selectedActivity;
         }
     }
