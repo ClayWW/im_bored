@@ -102,7 +102,33 @@ function spinReel() {
     const virtualNumItems = numItems * 3; // Number of items in the virtual list
     const cycleCount = 5; // Number of times to cycle through all activities
     const totalItems = cycleCount * virtualNumItems + Math.floor(Math.random() * virtualNumItems);
+    const initialDuration = 2000; // Initial duration in milliseconds
+
+    let currentStep = 0;
+    const steps = 100; // Number of steps for gradual slowdown
+    const durationStep = initialDuration / steps;
+
+    function animateStep() {
+        currentStep++;
+        const progress = currentStep / steps;
+        const currentItems = totalItems * easeOutQuad(progress);
+        const offset = -currentItems * 50;
+
+        reel.style.transform = `translateY(${offset}px)`;
+
+        if (currentStep < steps) {
+            setTimeout(animateStep, durationStep);
+        } else {
+            const finalIndex = Math.floor(currentItems) % virtualNumItems;
+            const selectedActivity = activities[finalIndex % numItems].name;
+            document.getElementById('activity').innerText = selectedActivity;
+        }
+    }
+
+    animateStep();
     
+    
+    /*
     const duration = (totalItems / virtualNumItems) * 10; // Duration of the spin animation
 
     const keyframes = `
@@ -126,6 +152,7 @@ function spinReel() {
         reel.style.animation = 'none';
         reel.style.transform = `translateY(${-finalIndex * 50}px)`;
     }, duration * 1000);
+    */
     /*
     const offset = -totalItems * 50; // 50px is the height of each reel item
     reel.style.transition = `transform ${totalItems / virtualNumItems}s linear`;
@@ -141,6 +168,10 @@ function spinReel() {
         reel.style.transition = 'transform 1s ease-out';
     }, (totalItems / virtualNumItems) * 1000); // Match the duration of the CSS transition
     */
+}
+
+function easeOutQuad(t) {
+    return t * (2 - t);
 }
 
 function resetReel() {
